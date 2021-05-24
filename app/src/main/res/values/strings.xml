@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android Labs</string>
+    <string name = "hello_message">Look at my GUI</string>
+    <string name = "ButtonText">CLICK HERE</string>
+    <string name = "CheckText">Check this out!</string>
+    <string name = "SwitchText">Switch On/Off</string>
+    <string name = "edit_message">Type Here</string>
+    <string name = "toast_message">Here is more information</string>
+    <string name = "undo">Undo</string>
+    <string name = "check_true">The checkbox is on.</string>
+    <string name = "check_false">The checkbox is off.</string>
+    <string name = "sw_true">The switch is on.</string>
+    <string name = "sw_false">The switch is off.</string>
+</resources>

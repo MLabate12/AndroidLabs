@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android Labs</string>
+    <string name = "hello_message">Regardez mon IG</string>
+    <string name = "ButtonText">CLIQUEZ ICI</string>
+    <string name = "CheckText">Regarde Ça!</string>
+    <string name = "SwitchText">Changer Allumé ou Éteint</string>
+    <string name = "edit_message">Écrivez Ici</string>
+    <string name = "toast_message">Voici Plus d\'Informations</string>
+    <string name = "undo">Annuler</string>
+    <string name = "check_true">La case à cocher est activée.</string>
+    <string name = "check_false">La case à cocher est désactivée.</string>
+    <string name = "sw_true">L\'interrupteur est activé.</string>
+    <string name = "sw_false">L\'interrupteur est éteint.</string>
+</resources>
+
