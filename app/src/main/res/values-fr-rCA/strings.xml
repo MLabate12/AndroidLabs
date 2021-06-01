@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Android Labs</string>
     <string name = "hello_message">Regardez mon IG</string>
-    <string name = "ButtonText">CLIQUEZ ICI</string>
+    <string name = "ButtonText">Connecter</string>
     <string name = "CheckText">Regarde Ça!</string>
     <string name = "SwitchText">Changer Allumé ou Éteint</string>
     <string name = "edit_message">Écrivez Ici</string>
@@ -12,5 +12,15 @@
     <string name = "check_false">La case à cocher est désactivée.</string>
     <string name = "sw_true">L\'interrupteur est activé.</string>
     <string name = "sw_false">L\'interrupteur est éteint.</string>
+    <string name = "email">Entrez votre adresse email:</string>
+    <string name = "email_message">Écrivez votre email ici</string>
+    <string name = "pword">Tapez votre mot de passe:</string>
+    <string name="profile">Votre profil</string>
+    <string name="name">Votre nom:</string>
+    <string name="name_message">Entrez votre nom</string>
+    <string name="email2">Votre Email::</string>
+    <string name="email_message2">Entrez votre email</string>
+    <string name="pic">Votre photo</string>
+    <string name="click_pic">Cliquez sur le bouton ci-dessus pour prendre une photo.</string>
 </resources>
 

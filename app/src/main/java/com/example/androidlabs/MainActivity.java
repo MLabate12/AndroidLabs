@@ -1,50 +1,51 @@
 package com.example.androidlabs;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+import android.content.Intent;
 
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences prefs = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_relative);
+        setContentView(R.layout.activity_profile);
 
-        Button btn = findViewById(R.id.button);
-        btn.setOnClickListener( (click) -> Toast.makeText(MainActivity.this, btn.getResources().getString(R.string.toast_message), Toast.LENGTH_LONG).show());
+        prefs = getSharedPreferences("Email", Context.MODE_PRIVATE);
+        String savedString = prefs.getString("Email", "");
+        EditText typeField = findViewById(R.id.theEdit2);
+        typeField.setText(savedString);
 
-        EditText theEdit = findViewById(R.id.theEdit2);
-        CheckBox cb = findViewById(R.id.checkb);
-        cb.setOnCheckedChangeListener( (compoundButton, b) -> {
-            String message = "";
-
-            if (b){
-                message = cb.getResources().getString(R.string.check_true);
-            } else { message = cb.getResources().getString(R.string.check_false);}
-
-            Snackbar.make(theEdit, message, Snackbar.LENGTH_LONG)
-                    .setAction(cb.getResources().getString(R.string.undo), click-> compoundButton.setChecked( !b ))
-                    .show(); });
-
-        Switch sw = findViewById(R.id.swtch);
-        sw.setOnCheckedChangeListener( (compoundButton, b) -> {
-            String message = "";
-
-            if (b){
-                message = sw.getResources().getString(R.string.sw_true);
-            } else { message = sw.getResources().getString(R.string.sw_false);}
-
-            Snackbar.make(theEdit, message, Snackbar.LENGTH_LONG)
-                    .setAction(sw.getResources().getString(R.string.undo), click-> compoundButton.setChecked( !b ))
-                    .show(); });
+        Button saveButton = findViewById(R.id.button);
+        saveButton.setOnClickListener( bt -> saveSharedPrefs( typeField.getText().toString()) );
+        saveButton.setOnClickListener( (click) -> setContentView(R.layout.activity_profile2) );
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    private void saveSharedPrefs(String stringToSave)
+    {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("email", stringToSave);
+        editor.commit();
+    }
+
 }
