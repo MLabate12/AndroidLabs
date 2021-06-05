@@ -1,51 +1,75 @@
 package com.example.androidlabs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.content.SharedPreferences;
-import android.content.Intent;
 
-import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences prefs = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        prefs = getSharedPreferences("Email", Context.MODE_PRIVATE);
-        String savedString = prefs.getString("Email", "");
-        EditText typeField = findViewById(R.id.theEdit2);
-        typeField.setText(savedString);
+        SharedPreferences prefs = this.getSharedPreferences(
+                "com.example.androidlabs", Context.MODE_PRIVATE);
+        String email = prefs.getString("Email", "");
+        EditText text = findViewById(R.id.enterEmail);
+        text.setText(email);
 
-        Button saveButton = findViewById(R.id.button);
-        saveButton.setOnClickListener( bt -> saveSharedPrefs( typeField.getText().toString()) );
-        saveButton.setOnClickListener( (click) -> setContentView(R.layout.activity_profile2) );
+        Button loginButton = findViewById(R.id.loginButton);
+
+        loginButton.setOnClickListener(click ->
+        {
+            Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
+            goToProfile.putExtra("EMAIL", text.getText().toString());
+            startActivityForResult(goToProfile, 456);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        SharedPreferences prefs = this.getSharedPreferences(
+                "com.example.androidlabs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = prefs.edit();
+        EditText email = findViewById(R.id.enterEmail);
+        edit.putString("Email", email.getText().toString());
+        edit.commit();
     }
 
-    private void saveSharedPrefs(String stringToSave)
-    {
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("email", stringToSave);
-        editor.commit();
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
 
 }
