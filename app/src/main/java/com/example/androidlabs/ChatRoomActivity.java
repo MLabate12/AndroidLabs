@@ -49,7 +49,6 @@ public class ChatRoomActivity extends AppCompatActivity {
             updateView();
         });
 
-
         list.setOnItemClickListener((parent, view, position, id) -> new AlertDialog.Builder(ChatRoomActivity.this)
                 .setTitle(getResources().getString(R.string.deleteEntry))
                 .setMessage(getResources().getString(R.string.row_select_msg) + position + "\n" + getResources().getString(R.string.databse_id_msg) + id)

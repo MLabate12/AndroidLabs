@@ -96,11 +96,10 @@ public class MessageDB extends SQLiteOpenHelper {
     }
 
     private void printCursor(Cursor c, int version) {
-        Log.i("printCursor", "DB version number: " + version
-                + "\nNumber of columns: "
-                + c.getColumnCount()
+        Log.i("printCursor", "Database version: " + version
+                + "\nNo. Columns: " + c.getColumnCount()
                 + "\nColumn Names: " + Arrays.toString(c.getColumnNames())
-                + "\nNumber of rows: " + c.getCount());
+                + "\nNo. Rows: " + c.getCount());
     }
 
 }

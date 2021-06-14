@@ -3,8 +3,10 @@ package com.example.androidlabs;
 public class Message {
 
     private String message;
+    boolean isSent;
+    boolean isRecevied;
     private MessageType type;
-    private int id;
+    private long id;
 
     public Message(String message, MessageType type){
         setMessage(message);
@@ -12,7 +14,7 @@ public class Message {
         setId(id);
     }
 
-    public Message(int id, String message, MessageType type) {
+    public Message(long id, String message, MessageType type) {
         setId(id);
         setMessage(message);
         setType(type);
@@ -34,7 +36,7 @@ public class Message {
         this.type = type;
     }
 
-    public int getId() { return id; }
+    public long getId() { return id; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(long id) { this.id = id; }
 }
