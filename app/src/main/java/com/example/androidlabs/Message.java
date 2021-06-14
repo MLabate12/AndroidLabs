@@ -4,8 +4,16 @@ public class Message {
 
     private String message;
     private MessageType type;
+    private int id;
 
     public Message(String message, MessageType type){
+        setMessage(message);
+        setType(type);
+        setId(id);
+    }
+
+    public Message(int id, String message, MessageType type) {
+        setId(id);
         setMessage(message);
         setType(type);
     }
@@ -25,4 +33,8 @@ public class Message {
     public void setType(MessageType type) {
         this.type = type;
     }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 }

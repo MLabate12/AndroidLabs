@@ -24,6 +24,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
     private List<Message> messageList = new ArrayList<>();
     private MyListAdapter myAdapter;
+    private MessageDB messageDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,65 +35,69 @@ public class ChatRoomActivity extends AppCompatActivity {
         Button send = findViewById(R.id.sendButton);
         Button receive = findViewById(R.id.receiveButton);
         EditText text = findViewById(R.id.chatText);
+        messageDB = new MessageDB(this);
+        messageDB.getWritableDatabase();
+        messageList = messageDB.getAll();
 
         send.setOnClickListener(v -> {
-            messageList.add(new Message(text.getText().toString(), MessageType.SEND));
-            myAdapter.notifyDataSetChanged();
+            messageDB.addMessage(new Message(text.getText().toString(), MessageType.SEND));
+            updateView();
         });
 
         receive.setOnClickListener(v -> {
-            messageList.add(new Message(text.getText().toString(), MessageType.RECIEVE));
-            myAdapter.notifyDataSetChanged();
+            messageDB.addMessage(new Message(text.getText().toString(), MessageType.RECIEVE));
+            updateView();
         });
 
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener((parent, view, position, id) -> new AlertDialog.Builder(ChatRoomActivity.this)
+                .setTitle(getResources().getString(R.string.deleteEntry))
+                .setMessage(getResources().getString(R.string.row_select_msg) + position + "\n" + getResources().getString(R.string.databse_id_msg) + id)
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    messageDB.deleteMessage(messageList.get(position));
+                    updateView();
+                })
 
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                new AlertDialog.Builder(ChatRoomActivity.this)
-                        .setTitle(getResources().getString(R.string.deleteEntry))
-                        .setMessage(getResources().getString(R.string.row_select_msg) + position + "\n" + getResources().getString(R.string.databse_id_msg) + id)
-                        .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                            messageList.remove(position);
-                            myAdapter.notifyDataSetChanged();
-                        })
-                        .setNegativeButton(android.R.string.no, null).show();
-            }
-        });
+                .setNegativeButton(android.R.string.no, null).show());
+        }
+
+    private void updateView() {
+        messageList = messageDB.getAll();
+        myAdapter.notifyDataSetChanged();
     }
 
-    private class MyListAdapter extends BaseAdapter {
+        private class MyListAdapter extends BaseAdapter {
 
-        public int getCount() {
-            return messageList.size();
-        }
-
-        public Object getItem(int position) {
-            return messageList.get(position).getMessage();
-        }
-
-        public long getItemId(int position) {
-            return (long) position;
-        }
-
-        public View getView(int position, View old, ViewGroup parent) {
-
-            LayoutInflater inflater = getLayoutInflater();
-            View newView;
-            TextView tView;
-            if (messageList.get(position).getType().equals(MessageType.SEND)) {
-                newView = inflater.inflate(R.layout.row_send, parent, false);
-                tView = newView.findViewById(R.id.sendText);
-            } else {
-                newView = inflater.inflate(R.layout.row_receive, parent, false);
-                tView = newView.findViewById(R.id.receiveText);
+            public int getCount() {
+                return messageList.size();
             }
-            tView.setText(getItem(position).toString());
-            EditText text = findViewById(R.id.chatText);
-            text.setText("");
 
-            //return it to be put in the table
-            return newView;
+            public Object getItem(int position) {
+                return messageList.get(position).getMessage();
+            }
+
+            public long getItemId(int position) {
+                return (long) position;
+            }
+
+            public View getView(int position, View old, ViewGroup parent) {
+
+                LayoutInflater inflater = getLayoutInflater();
+                View newView;
+                TextView tView;
+                if (messageList.get(position).getType().equals(MessageType.SEND)) {
+                    newView = inflater.inflate(R.layout.row_send, parent, false);
+                    tView = newView.findViewById(R.id.sendText);
+                } else {
+                    newView = inflater.inflate(R.layout.row_receive, parent, false);
+                    tView = newView.findViewById(R.id.receiveText);
+                }
+                tView.setText(getItem(position).toString());
+                EditText text = findViewById(R.id.chatText);
+                text.setText("");
+
+                //return it to be put in the table
+                return newView;
+            }
         }
     }
-}
