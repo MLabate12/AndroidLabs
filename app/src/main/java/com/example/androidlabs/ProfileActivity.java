@@ -35,10 +35,15 @@ public class ProfileActivity extends AppCompatActivity {
         mImageButton.setOnClickListener(click -> dispatchTakePictureIntent());
 
         Button cButton = findViewById(R.id.chatButton);
-        cButton.setOnClickListener(click ->
-        {
+        cButton.setOnClickListener(click -> {
             Intent goToChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
             startActivity(goToChat);
+        });
+
+        Button wButton = findViewById(R.id.weatherButton);
+        wButton.setOnClickListener(click -> {
+            Intent goToWeather = new Intent(ProfileActivity.this, WeatherForecast.class);
+            startActivity(goToWeather);
         });
     }
 

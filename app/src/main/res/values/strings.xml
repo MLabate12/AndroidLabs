@@ -28,4 +28,5 @@
     <string name="deleteEntry">Do you want to delete this?</string>
     <string name="row_select_msg">The selected row is: </string>
     <string name="databse_id_msg">The database ID is: </string>
+    <string name="weatherButton">Weather Forecast</string>
 </resources>

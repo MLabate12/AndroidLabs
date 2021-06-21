@@ -89,4 +89,12 @@
         android:text="@string/chatButton"
         android:layout_row="4"
         android:layout_column="0" />
+
+    <Button
+        android:id="@+id/weatherButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weatherButton"
+        android:layout_row="4"
+        android:layout_column="0" />
 </LinearLayout>
