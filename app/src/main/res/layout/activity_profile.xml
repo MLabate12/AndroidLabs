@@ -5,7 +5,11 @@
     android:layout_height="match_parent"
     android:rowCount="5"
     android:columnCount="1"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layout_marginTop="27dp"
+    android:layout_marginBottom="27dp"
+    android:layout_marginLeft="48dp"
+    android:layout_marginRight="48dp" >
 
     <TextView
         android:id="@+id/emailText"
@@ -23,7 +27,11 @@
         android:hint="@string/email_message"
         android:inputType="textEmailAddress"
         android:layout_row="1"
-        android:layout_column="0" />
+        android:layout_column="0"
+        android:nextFocusLeft="@id/loginButton"
+        android:nextFocusRight="@id/enterPassword"
+        android:nextFocusUp="@id/loginButton"
+        android:nextFocusDown="@id/enterPassword" />
 
     <TextView
         android:id="@+id/passwordText"
@@ -40,7 +48,11 @@
         android:layout_row="3"
         android:layout_column="0"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:nextFocusDown="@id/loginButton"
+        android:nextFocusUp="@id/enterEmail"
+        android:nextFocusRight="@id/loginButton"
+        android:nextFocusLeft="@id/enterEmail" />
 
     <Button
         android:id="@+id/loginButton"
@@ -48,5 +60,9 @@
         android:layout_height="wrap_content"
         android:text="@string/ButtonText"
         android:layout_row="4"
-        android:layout_column="0" />
+        android:layout_column="0"
+        android:nextFocusDown="@id/loginButton"
+        android:nextFocusUp="@id/enterPassword"
+        android:nextFocusRight="@id/loginButton"
+        android:nextFocusLeft="@id/enterPassword" />
 </GridLayout>
