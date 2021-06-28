@@ -5,9 +5,12 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
-    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
-    <uses-feature android:name="android.software.leanback" android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -18,10 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLabs">
+        <activity android:name=".EmptyActivity"></activity>
         <activity
             android:name=".activity_weather_forecast"
             android:label="@string/title_activity_weather_forecast"
-            android:theme="@style/Theme.AndroidLabs.NoActionBar"></activity>
+            android:theme="@style/Theme.AndroidLabs.NoActionBar" />
         <activity android:name=".WeatherForecast" />
         <activity android:name=".MessageDB" />
         <activity android:name=".ChatRoomActivity" />
