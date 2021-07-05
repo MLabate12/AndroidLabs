@@ -126,5 +126,17 @@
         android:nextFocusUp="@id/chatButton"
         android:nextFocusRight="@id/nameInput"
         android:nextFocusLeft="@id/chatButton" />
+
+    <Button
+        android:id="@+id/tbButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tbButton"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:nextFocusDown="@id/nameInput"
+        android:nextFocusUp="@id/chatButton"
+        android:nextFocusRight="@id/nameInput"
+        android:nextFocusLeft="@id/chatButton" />
 </LinearLayout>
     </ScrollView>

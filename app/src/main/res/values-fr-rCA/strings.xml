@@ -29,5 +29,9 @@
     <string name="row_select_msg">La ligne sélectionnée est: </string>
     <string name="databse_id_msg">L\'identifiant de la base de données est: </string>
     <string name="weatherButton">Prévisions Météorologiques</string>
+    <string name="tbButton">Aller à la page de la barre d\'outils</string>
+    <string name="item1">Objet 1</string>
+    <string name="item2">Objet 2</string>
+    <string name="item3">Objet 3</string>
 </resources>
 

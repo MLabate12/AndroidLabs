@@ -45,6 +45,22 @@ public class ProfileActivity extends AppCompatActivity {
             Intent goToWeather = new Intent(ProfileActivity.this, WeatherForecast.class);
             startActivity(goToWeather);
         });
+
+        Button tbButton = findViewById(R.id.tbButton);
+        tbButton.setOnClickListener(click -> {
+            Intent goToTB = new Intent(ProfileActivity.this, TestToolbar.class);
+            startActivity(goToTB);
+        });
+
+        Intent goToLogin = getIntent();
+        int num = goToLogin.getIntExtra("num", 0);
+        Log.e(ACTIVITY_NAME, "NUM IS:" + num);
+        if (num==500) {
+            Intent goToStart = new Intent(ProfileActivity.this, MainActivity.class);
+            startActivity(goToStart);
+            finish();
+        }
+
     }
 
     private void dispatchTakePictureIntent() {
@@ -63,6 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mImageButton.setImageBitmap(imageBitmap);
         }
+
     }
 
     @Override
